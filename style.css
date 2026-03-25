@@ -3,7 +3,6 @@
     position: relative; 
     width: 500px; /* Example width */
     height: 300px; /* Example height */
-    border: 2px solid white; /* Optional: helps visualize the container */
 }
 
 .positioned-image {
@@ -11,7 +10,7 @@
     position: absolute; 
     
     /* Set the X-coordinate (e.g., 100 pixels from the left edge) */
-    left: 500px; 
+    left: 400px; 
     
     /* Set the Y-coordinate (e.g., 50 pixels from the top edge) */
     top: 500px; 
