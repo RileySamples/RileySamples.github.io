@@ -1,0 +1,18 @@
+.image-container {
+    /* The container sets the context for the absolute position */
+    position: relative; 
+    width: 500px; /* Example width */
+    height: 300px; /* Example height */
+    border: 2px solid white; /* Optional: helps visualize the container */
+}
+
+.positioned-image {
+    /* The image is positioned absolutely within its relative container */
+    position: absolute; 
+    
+    /* Set the X-coordinate (e.g., 100 pixels from the left edge) */
+    left: 100px; 
+    
+    /* Set the Y-coordinate (e.g., 50 pixels from the top edge) */
+    top: 50px; 
+}
