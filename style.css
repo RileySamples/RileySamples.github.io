@@ -23,6 +23,6 @@ body {
 
 .playbutton {
   position: absolute;
-  left: 800px;  /* moved further right to align with yellow screen */
-  top: 400px;   /* vertically centered on the yellow screen */
+  left: 1100px;  /* moved further right to align with yellow screen */
+  top: 450px;   /* vertically centered on the yellow screen */
 }
