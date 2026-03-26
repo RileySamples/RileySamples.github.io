@@ -9,5 +9,5 @@ body {
 .playbutton {
   position: absolute;
   left: 200px;  /* distance from the left edge of the page */
-  top: 150px;   /* distance from the top edge of the page */
+  top: 100px;   /* distance from the top edge of the page */
 }
