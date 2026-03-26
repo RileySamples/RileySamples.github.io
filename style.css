@@ -14,9 +14,15 @@ body {
   min-height: 100vh;
 }
 
+.musicnotes {
+  position: absolute;
+  left: 550px;  /* centers it above the yellow screen */
+  top: 0px;     /* touches the very top of the screen */
+}
+
 .playbutton {
   position: absolute;
-  left: 200px;  /* adjust to your liking */
-  top: 50px;    /* adjust to your liking */
+  left: 500px;  /* aligns with the yellow screen */
+  top: 250px;   /* vertically centered on the yellow screen */
   display: block;
 }
