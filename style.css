@@ -16,29 +16,31 @@ body {
 
 .musicnotes {
   position: absolute;
-  left: 600px;  /* centers it above the yellow screen */
-  top: 0px;     /* touches the very top of the screen */
+  left: 100px;  
+  top: 0px;     
 }
 
 
 .playbutton {
   position: absolute;
-  left: 1200px;  /* moved further right to align with yellow screen */
-  top: 420px;   /* vertically centered on the yellow screen */
+  width: 50%;
+  height: 50%;
+  left: 600px;  
+  top: 420px;   
 }
 
 .eyes_twoscreens {
   position: absolute;
-  left: 180px;  /* moved further right to align with yellow screen */
-  top: 80px;   /* vertically centered on the yellow screen */
+  left: 180px;  
+  top: 80px;   
 }
 .eyes_laptop {
   position: absolute;
-  left: 300px;  /* moved further right to align with yellow screen */
-  top: 100px;   /* vertically centered on the yellow screen */
+  left: 300px;  
+  top: 100px;   
 }
 .mouse_transition {
   position: absolute;
-  left: 0px;  /* moved further right to align with yellow screen */
-  top: 0px;   /* vertically centered on the yellow screen */
+  left: 0px; 
+  top: 0px;   
 }
