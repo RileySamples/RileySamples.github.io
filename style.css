@@ -15,3 +15,13 @@
     /* Set the Y-coordinate (e.g., 50 pixels from the top edge) */
     top: 30px; 
 }
+.playbutton {
+    /* The image is positioned absolutely within its relative container */
+    position: absolute; 
+    
+    /* Set the X-coordinate (e.g., 100 pixels from the left edge) */
+    left: 0px; 
+    
+    /* Set the Y-coordinate (e.g., 50 pixels from the top edge) */
+    top: 30px; 
+}
