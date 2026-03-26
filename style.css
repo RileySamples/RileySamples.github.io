@@ -23,6 +23,12 @@ body {
 
 .playbutton {
   position: absolute;
-  left: 1300px;  /* moved further right to align with yellow screen */
+  left: 1200px;  /* moved further right to align with yellow screen */
+  top: 420px;   /* vertically centered on the yellow screen */
+}
+
+.eyes_twoscreens {
+  position: absolute;
+  left: 1200px;  /* moved further right to align with yellow screen */
   top: 420px;   /* vertically centered on the yellow screen */
 }
