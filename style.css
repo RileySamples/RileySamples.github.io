@@ -4,10 +4,13 @@ body {
   background-size: cover;
   margin: 0;
   padding: 0;
+  height: 100vh; /* fits the viewport height */
 }
 
 .playbutton {
   position: absolute;
-  left: 200px;  /* distance from the left edge of the page */
-  top: 0px;   /* distance from the top edge of the page */
+  left: 200px;
+  top: 50px;  /* adjust this to move it up */
+  display: block; /* removes inline spacing */
+  vertical-align: top; /* prevents bottom gap */
 }
