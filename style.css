@@ -7,7 +7,7 @@
 
 .positioned-image {
     /* The image is positioned absolutely within its relative container */
-    position: absolute; 
+    position: fixed; 
     
     /* Set the X-coordinate (e.g., 100 pixels from the left edge) */
     left: 0px; 
@@ -17,7 +17,7 @@
 }
 .playbutton {
     /* The image is positioned absolutely within its relative container */
-    position: absolute; 
+    position: fixed; 
     
     /* Set the X-coordinate (e.g., 100 pixels from the left edge) */
     left: 0px; 
