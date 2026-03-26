@@ -34,11 +34,11 @@ body {
 }
 .eyes_laptop {
   position: absolute;
-  left: 1200px;  /* moved further right to align with yellow screen */
-  top: 420px;   /* vertically centered on the yellow screen */
+  left: 200px;  /* moved further right to align with yellow screen */
+  top: 100px;   /* vertically centered on the yellow screen */
 }
 .mouse_transition {
   position: absolute;
-  left: 180px;  /* moved further right to align with yellow screen */
-  top: 80px;   /* vertically centered on the yellow screen */
+  left: 0px;  /* moved further right to align with yellow screen */
+  top: 0px;   /* vertically centered on the yellow screen */
 }
