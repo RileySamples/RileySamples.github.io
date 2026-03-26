@@ -20,9 +20,9 @@ body {
   top: 0px;     /* touches the very top of the screen */
 }
 
+
 .playbutton {
   position: absolute;
-  left: 1000px;  /* aligns with the yellow screen */
-  top: 350px;   /* vertically centered on the yellow screen */
-  display: block;
+  left: 650px;  /* moved further right to align with yellow screen */
+  top: 320px;   /* vertically centered on the yellow screen */
 }
