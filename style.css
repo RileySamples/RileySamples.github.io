@@ -34,7 +34,7 @@ body {
 }
 .eyes_laptop {
   position: absolute;
-  left: 200px;  /* moved further right to align with yellow screen */
+  left: 300px;  /* moved further right to align with yellow screen */
   top: 100px;   /* vertically centered on the yellow screen */
 }
 .mouse_transition {
