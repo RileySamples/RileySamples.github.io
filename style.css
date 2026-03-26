@@ -29,6 +29,6 @@ body {
 
 .eyes_twoscreens {
   position: absolute;
-  left: 1200px;  /* moved further right to align with yellow screen */
-  top: 420px;   /* vertically centered on the yellow screen */
+  left: 600px;  /* moved further right to align with yellow screen */
+  top: 300px;   /* vertically centered on the yellow screen */
 }
