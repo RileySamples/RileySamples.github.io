@@ -31,13 +31,13 @@ body {
 
 .eyes_twoscreens {
   position: absolute;
-  left: 0px;  
-  top: 0px;   
+  left: -100px;  
+  top: -100px;   
 }
 .eyes_laptop {
   position: absolute;
-  left: 0px;  
-  top: 0px;   
+  left: -100px;  
+  top: -100px;   
 }
 .mouse_transition {
   position: absolute;
