@@ -26,20 +26,20 @@ body {
   width: 10%;
   height: 10%;
   left: 850px;  
-  top: 400px;   
+  top: 500px;   
 }
 
 .eyes_twoscreens {
   position: absolute;
   left: -100px;  
-  top: -100px;   
+  top: -50px;   
 }
 .eyes_laptop {
   position: absolute;
   width: 90%;
   height: 90%;
-  left: -100px;  
-  top: -100px;   
+  left: 0px;  
+  top: 0px;   
 }
 .mouse_transition {
   position: absolute;
