@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link rel="stylesheet" href="style.css">
+<style>
+body {
+  background-color: #FFFFFF;
+}
+</style>
+</body>
+    <img src="playerstill.png">
+    <img class="code1" src="code1.gif">
+    <img class="playerfall" src="eyes.gif">
+</head>
+</body>
+</html>
