@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Memory Match</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 480px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #fff;
+      color: #1a1a1a;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 500;
+      margin: 0 0 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 1rem 0;
+    }
+
+    .cell {
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: 500;
+      min-height: 52px;
+      line-height: 28px;
+      color: #999;
+      user-select: none;
+    }
+
+    .cell:hover {
+      background: #eee;
+    }
+
+    .cell.revealed {
+      background: #e6f1fb;
+      color: #185fa5;
+      cursor: default;
+    }
+
+    .cell.matched {
+      background: #eaf3de;
+      color: #3b6d11;
+      cursor: default;
+    }
+
+    .msg {
+      font-size: 14px;
+      color: #555;
+      margin: 0.5rem 0;
+      min-height: 20px;
+    }
+
+    button {
+      padding: 8px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      margin-top: 8px;
+    }
+
+    button:hover {
+      background: #f5f5f5;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Memory match</h1>
+  <div class="grid" id="grid"></div>
+  <p class="msg" id="msg"></p>
+  <button onclick="initGame()">New game</button>
+
+  <script>
+    let cards, flipped, solved, locked;
+
+    function initGame() {
+      const icons = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+      cards = [...icons, ...icons]
+        .sort(() => Math.random() - 0.5)
+        .map((val, i) => ({ id: i, val, revealed: false, matched: false }));
+      flipped = [];
+      solved = 0;
+      locked = false;
+      document.getElementById('msg').textContent = '';
+      render();
+    }
+
+    function render() {
+      const grid = document.getElementById('grid');
+      grid.innerHTML = '';
+      cards.forEach(c => {
+        const el = document.createElement('div');
+        el.className = 'cell' + (c.matched ? ' matched' : c.revealed ? ' revealed' : '');
+        el.textContent = (c.revealed || c.matched) ? c.val : '?';
+        if (!c.revealed && !c.matched) {
+          el.onclick = () => flipCard(c.id);
+        }
+        grid.appendChild(el);
+      });
+    }
+
+    function flipCard(id) {
+      if (locked) return;
+      const c = cards[id];
+      if (c.revealed || c.matched) return;
+
+      c.revealed = true;
+      flipped.push(id);
+      render();
+
+      if (flipped.length === 2) {
+        locked = true;
+        const [a, b] = flipped;
+
+        if (cards[a].val === cards[b].val) {
+          cards[a].matched = cards[b].matched = true;
+          cards[a].revealed = cards[b].revealed = false;
+          solved++;
+          flipped = [];
+          locked = false;
+          render();
+          if (solved === 8) {
+            document.getElementById('msg').textContent = 'You matched them all!';
+          }
+        } else {
+          setTimeout(() => {
+            cards[a].revealed = cards[b].revealed = false;
+            flipped = [];
+            locked = false;
+            render();
+          }, 900);
+        }
+      }
+    }
+
+    initGame();
+  </script>
+
+</body>
+</html>
