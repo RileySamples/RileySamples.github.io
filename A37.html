@@ -46,13 +46,13 @@
     }
 
     .cell.revealed {
-      background: #e6f1fb;
+      background: #FF00FF;
       color: #185fa5;
       cursor: default;
     }
 
     .cell.matched {
-      background: #eaf3de;
+      background: #FFEB2A;
       color: #3b6d11;
       cursor: default;
     }
@@ -90,7 +90,7 @@
     let cards, flipped, solved, locked;
 
     function initGame() {
-      const icons = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+      const icons = ['WPRB', 'CD', 'RECORD', 'MIC', 'AIR', 'DJ', 'ESCAPE', 'STUCK'];
       cards = [...icons, ...icons]
         .sort(() => Math.random() - 0.5)
         .map((val, i) => ({ id: i, val, revealed: false, matched: false }));
