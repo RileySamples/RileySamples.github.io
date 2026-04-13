@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Test 2</title>
+  <title>Quick Trivia</title>
   <style>
     body {
       font-family: sans-serif;
@@ -79,7 +79,7 @@
 </head>
 <body>
 
-  <h1>Test2a</h1>
+  <h1>Quick trivia</h1>
   <p id="question"></p>
   <div class="grid" id="options"></div>
   <p class="msg" id="msg"></p>
@@ -87,11 +87,14 @@
 
   <script>
     const questions = [
-      { q: 'What numbers represent wprb?', opts: ['103.3', '104.3', '102.3', '103.2'], a: 0 },
-      { q: 'Are you a DJ', opts: ['Yes', 'No', 'Kind of', 'I dont know'], a: 1 },
-      { q: 'Are you stuck here?', opts: ['Yes', 'No'], a: 1 },
-      { q: 'Do you want to leave?', opts: ['Yes', 'No', 'No', 'No'], a: 1 },
-      { q: 'Can you get me out of here?', opts: ['Yes'], a: 0 }
+      { q: 'What is the capital of Japan?', opts: ['Tokyo', 'Beijing', 'Seoul', 'Bangkok'], a: 0 },
+      { q: 'How many sides does a hexagon have?', opts: ['5', '6', '7', '8'], a: 1 },
+      { q: 'What planet is known as the Red Planet?', opts: ['Venus', 'Jupiter', 'Mars', 'Saturn'], a: 2 },
+      { q: 'What is 12 × 12?', opts: ['132', '144', '124', '148'], a: 1 },
+      { q: 'Who painted the Mona Lisa?', opts: ['Picasso', 'Rembrandt', 'Da Vinci', 'Monet'], a: 2 },
+      { q: 'How many continents are there?', opts: ['5', '6', '7', '8'], a: 2 },
+      { q: 'What gas do plants absorb?', opts: ['Oxygen', 'Nitrogen', 'CO2', 'Hydrogen'], a: 2 },
+      { q: 'What is the largest ocean?', opts: ['Atlantic', 'Indian', 'Arctic', 'Pacific'], a: 3 },
     ];
 
     let order, idx, correct, total;
@@ -141,9 +144,7 @@
         document.getElementById('msg').textContent = 'Wrong — the answer was: ' + questions[order[idx]].opts[correct_idx];
       }
 
-      document.getElementById('score').textContent = 'You got: ' + correct + ' / ' + total;
-      if ( correct > 2 ) {
-        document.getElementById('msg').textContent = "The second letter is E.";
+      document.getElementById('score').textContent = 'Score: ' + correct + ' / ' + total;
       idx++;
       setTimeout(showQuestion, 1400);
     }
