@@ -44,7 +44,7 @@
       font-weight: 500;
       min-height: 52px;
       line-height: 28px;
-      color: #999;
+      color: #000000;
       user-select: none;
     }
 
@@ -66,7 +66,7 @@
 
     .msg {
       font-size: 14px;
-      color: #555;
+      color: #000000;
       margin: 0.5rem 0;
       min-height: 20px;
     }
@@ -91,7 +91,27 @@
   <h1>Random Access Memory</h1>
   <div class="grid" id="grid"></div>
   <p class="msg" id="msg"></p>
-  <button onclick="initGame()">New game</button>
+
+<button id="protectedButton">Continue</button>
+
+<script>
+  document.getElementById("protectedButton").addEventListener("click", function() {
+    // 1. Ask for the password
+    var password = prompt("Enter the first letter.");
+    
+    // 2. Set your chosen password
+    var correctPassword = "l"; 
+
+    // 3. Check if it matches
+    if (password === correctPassword) {
+      alert("Continue");
+      window.location.href = "https://your-secure-link.com"; // Redirect destination
+    } else {
+      alert("Access denied.");
+    }
+  });
+</script>
+
 
   <script>
     let cards, flipped, solved, locked;
