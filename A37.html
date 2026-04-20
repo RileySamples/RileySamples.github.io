@@ -96,16 +96,16 @@
 
 <script>
   document.getElementById("protectedButton").addEventListener("click", function() {
-    // 1. Ask for the password
+   
     var password = prompt("Enter the first letter.");
     
-    // 2. Set your chosen password
+   
     var correctPassword = "l"; 
 
-    // 3. Check if it matches
+   
     if (password === correctPassword) {
       alert("Continue");
-      window.location.href = "https://rileysamples.github.io/t2.html"; // Redirect destination
+      window.location.href = "https://rileysamples.github.io/t2.html"; 
     } else {
       alert("Access denied.");
     }
