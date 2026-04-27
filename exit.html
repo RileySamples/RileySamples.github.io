@@ -35,12 +35,12 @@
 </head>
 <body>
 
-    <!-- Dialogue Box -->
+
     <div id="dialogueBox">
-        Hello there!
+        Hello.
     </div>
 
-    <!-- Next Button -->
+  
     <br>
     <button onclick="nextDialogue()">Next</button>
   <script>
@@ -63,11 +63,10 @@
                 dialogues[currentDialogue];
         }
     </script>
-<button id="protectedButton">Continue</button>
-  <script>
+<script>
   document.getElementById("protectedButton").addEventListener("click", function() {
    
-    var password = prompt("Enter the full passcode.");
+    var password = prompt("Enter the full code.");
     
    
     var correctPassword = "leave"; 
@@ -79,9 +78,6 @@
     } else {
       alert("Access denied.");
     }
-    <script>
-</body>
-
   });
 </script>
 </html>
