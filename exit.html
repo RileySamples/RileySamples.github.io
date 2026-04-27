@@ -44,12 +44,26 @@
     <br>
     <button onclick="nextDialogue()">Next</button>
 
+<script>
+  document.getElementById("protectedButton").addEventListener("click", function() {
+   
+    var password = prompt("Enter the full passcode.");
+    
+   
+    var correctPassword = "leave"; 
+
+   
+    if (password === correctPassword) {
+      alert("Continue");
+      window.location.href = "https://rileysamples.github.io/final.html"; 
+    } else {
+      alert("Access denied.");
+    }
     <script>
         const dialogues = [
-            "Hello.",
-            "You have successfully completed all the challenges.",
+        
             "Thank you for saving me.",
-            "You may now return to your job.."
+
         ];
 
         let currentDialogue = 0;
@@ -67,22 +81,7 @@
     </script>
 
 </body>
-  
-<script>
-  document.getElementById("protectedButton").addEventListener("click", function() {
-   
-    var password = prompt("Enter the full passcode.");
-    
-   
-    var correctPassword = "leave"; 
 
-   
-    if (password === correctPassword) {
-      alert("Continue");
-      window.location.href = "https://rileysamples.github.io/final.html"; 
-    } else {
-      alert("Access denied.");
-    }
   });
 </script>
 </html>
