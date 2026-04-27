@@ -185,6 +185,25 @@
     <input id="guess-input" maxlength="1" placeholder="A–Z" autocomplete="off" />
     <button onclick="submitGuess()">Guess</button>
     <button onclick="resetGame()">New</button>
+    <button id="protectedButton">Continue</button>
+
+<script>
+  document.getElementById("protectedButton").addEventListener("click", function() {
+   
+    var password = prompt("Enter the first letter.");
+    
+   
+    var correctPassword = "l"; 
+
+   
+    if (password === correctPassword) {
+      alert("Continue");
+      window.location.href = "https://rileysamples.github.io/t2.html"; 
+    } else {
+      alert("Access denied.");
+    }
+  });
+</script>
   </div>
 
   <div id="status"></div>
@@ -244,7 +263,7 @@
         gameOver = true;
         const s = document.getElementById('status');
         s.className = 'win';
-        s.textContent = 'You got it! The word was ' + word.join('') + '. Well done!'; //here
+        s.textContent = 'You got it! The word was ' + word.join('') + '. The final letters are ve.'; //here
       } else if (wrongCount >= MAX_WRONG) {
         gameOver = true;
         word.forEach(ch => guessed.add(ch));
