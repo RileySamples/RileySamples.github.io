@@ -3,18 +3,17 @@
 <html lang="en">
   
 <head>
-    <title>Dialogue Box Example</title>
+    <title>Exit</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 100px;
-            body {
-  background-image: url('head.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
+            background-image: url('head.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
 }
         }
 
@@ -47,10 +46,10 @@
 
     <script>
         const dialogues = [
-            "Hello there!",
-            "Welcome to this webpage.",
-            "Click next to continue.",
-            "Add your own dialogue here."
+            "Hello.",
+            "You have successfully completed all the challenges.",
+            "Thank you for saving me.",
+            "You may now return to your job.."
         ];
 
         let currentDialogue = 0;
@@ -68,4 +67,22 @@
     </script>
 
 </body>
+  
+<script>
+  document.getElementById("protectedButton").addEventListener("click", function() {
+   
+    var password = prompt("Enter the full passcode.");
+    
+   
+    var correctPassword = "leave"; 
+
+   
+    if (password === correctPassword) {
+      alert("Continue");
+      window.location.href = "https://rileysamples.github.io/final.html"; 
+    } else {
+      alert("Access denied.");
+    }
+  });
+</script>
 </html>
