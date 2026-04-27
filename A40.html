@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Challenge 3</title>
+</head>
+<body>
+
+    <h1>Guess the Word</h1>
+    
+    <p>Type your guess below:</p>
+    
+    <input type="text" id="guessInput">
+    <button onclick="checkGuess()">Guess</button>
+
+    <p id="message"></p>
+
+    <script>
+       
+        const secretWord = "radio";
+
+        function checkGuess() {
+            const userGuess = document
+                .getElementById("guessInput")
+                .value
+                .toLowerCase();
+
+            const message = document.getElementById("message");
+
+            if (userGuess === secretWord) {
+                message.innerHTML = "The last two letters are VE";
+            } else {
+                message.innerHTML = "Hint: 5 letters. WPRB. Show.";
+            }
+        }
+    </script>
+
+</body>
+</html>
