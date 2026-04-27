@@ -151,10 +151,29 @@
         document.getElementById('msg').textContent = 'Wrong — the answer was: ' + questions[order[idx]].opts[correct_idx];
       }
 
-      document.getElementById('score').textContent = 'Score: ' + correct + ' / ' + total;
+      document.getElementById('score').textContent = 'Score: ' + correct + ' / ' + total +'The second and third letters are "ea".';
       idx++;
       setTimeout(showQuestion, 1400);
     }
+      <button id="protectedButton">Continue</button>
+
+<script>
+  document.getElementById("protectedButton").addEventListener("click", function() {
+   
+    var password = prompt("Enter the second and third letters.");
+    
+   
+    var correctPassword = "ea"; 
+
+   
+    if (password === correctPassword) {
+      alert("Continue");
+      window.location.href = "https://rileysamples.github.io/t3.html"; 
+    } else {
+      alert("Access denied.");
+    }
+  });
+</script>
 
     init();
   </script>
