@@ -1,182 +1,236 @@
-<!DOCTYPE html>
+
+
+  
+  <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Test 2</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
-  <title>Your first test</title>
+  <title>Trivia Game</title>
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: "VT323", monospace;
-      max-width: 480px;
-      margin: 40px auto;
-      padding: 0 20px;
-      background-image: url('knees.png');
-      color: #000000;
+      font-family: sans-serif;
+      background: #f5f4f0;
+      min-height: 100vh;
+      display: flex;
+       background-image: url('knees.png');
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
     }
-  
-  
-    h1 {
-      font-size: 22px;
-      font-weight: 500;
-      margin: 0 0 1rem;
+
+    #card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 520px;
+      width: 100%;
+    }
+
+    #progress {
+      font-size: 12px;
+      color: #aaa;
+      margin-bottom: 0.5rem;
     }
 
     #question {
-      font-size: 16px;
-      line-height: 1.6;
-      margin: 0 0 1rem;
-      min-height: 50px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 1rem;
+      font-size: 18px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
     }
 
     .option {
-      background: #f5f5f5;
-      border: 1px solid #ddd;
-      border-radius: 0px;
-      padding: 12px;
-      text-align: center;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: 500;
-      min-height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .option:hover {
-      background: #eee;
-    }
-
-    .option.correct {
-      background: #eaf3de;
-      color: #3b6d11;
-      cursor: default;
-    }
-
-    .option.wrong {
-      background: #fcebeb;
-      color: #a32d2d;
-      cursor: default;
-    }
-
-    .msg {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 12px 16px;
+      margin-bottom: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      color: #111;
       font-size: 14px;
-      color: #555;
-      min-height: 20px;
-      margin: 0 0 0.5rem;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
     }
 
-    .score {
+    .option:hover:not(:disabled) { background: #f5f5f3; }
+    .option:active:not(:disabled) { transform: scale(0.99); }
+    .option.correct { background: #E1F5EE; border-color: #5DCAA5; color: #085041; }
+    .option.wrong   { background: #FCEBEB; border-color: #F09595; color: #501313; }
+    .option.reveal  { background: #E1F5EE; border-color: #5DCAA5; color: #085041; }
+
+    #feedback {
       font-size: 13px;
-      color: #999;
+      color: #666;
+      min-height: 20px;
+      margin: 0.75rem 0;
     }
+
+    #next-btn {
+      margin-top: 0.5rem;
+      padding: 10px 22px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: transparent;
+      color: #111;
+      font-size: 14px;
+      cursor: pointer;
+      display: none;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    #next-btn:hover  { background: #f5f5f3; }
+    #next-btn:active { transform: scale(0.97); }
+
+    #score-card {
+      display: none;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    #score-num {
+      font-size: 52px;
+      font-weight: 600;
+      color: #111;
+    }
+
+    #score-label {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 1.5rem;
+    }
+
+    #restart-btn {
+      padding: 10px 24px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: transparent;
+      color: #111;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    #restart-btn:hover { background: #f5f5f3; }
   </style>
 </head>
 <body>
-
-  <h1>Quick trivia</h1>
-  <p id="question"></p>
-  <div class="grid" id="options"></div>
-  <p class="msg" id="msg"></p>
-  <p class="score" id="score">Score: 0 / 0</p>
-
-  <script>
-    const questions = [
-      { q: 'What numbers represent wprb?', opts: ['103.3', '104.3', '102.3', '103.2'], a: 0 },
-      { q: 'Where is WPRB located?', opts: ['New south', 'bloomberg', 'nassau', 'east pyne'], a: 1 },
-      { q: 'x?', opts: ['x', 'x', 'x', 'x'], a: 2 },
-     { q: 'x?', opts: ['x', 'x', 'x', 'x'], a: 2 },
-      { q: 'x?', opts: ['x', 'x', 'x', 'x'], a: 2 },
-      { q: 'x?', opts: ['x', 'x', 'x', 'x'], a: 2 },
-      { q: 'x?', opts: ['x', 'x', 'x', 'x'], a: 2 },
-      { q: 'x?', opts: ['x', 'x', 'x', 'x'], a: 2 },
-    ];
-
-    let order, idx, correct, total;
-
-    function init() {
-      order = questions.map((_, i) => i).sort(() => Math.random() - 0.5);
-      idx = 0;
-      correct = 0;
-      total = 0;
-      document.getElementById('msg').textContent = '';
-      document.getElementById('score').textContent = 'Score: 0 / 0';
-      showQuestion();
-    }
-
-    function showQuestion() {
-      if (idx >= order.length) {
-        idx = 0;
-        order.sort(() => Math.random() - 0.5);
-      }
-      const q = questions[order[idx]];
-      document.getElementById('question').textContent = q.q;
-      document.getElementById('msg').textContent = '';
-
-      const grid = document.getElementById('options');
-      grid.innerHTML = '';
-      q.opts.forEach((opt, i) => {
-        const el = document.createElement('div');
-        el.className = 'option';
-        el.textContent = opt;
-        el.onclick = () => answer(i, q.a, el, grid);
-        grid.appendChild(el);
-      });
-    }
-
-    function answer(chosen, correct_idx, el, grid) {
-      total++;
-      const cells = grid.querySelectorAll('.option');
-      cells.forEach(c => c.onclick = null);
-
-      if (chosen === correct_idx) {
-        correct++;
-        el.classList.add('correct');
-        document.getElementById('msg').textContent = 'Correct!';
-      } else {
-        el.classList.add('wrong');
-        cells[correct_idx].classList.add('correct');
-        document.getElementById('msg').textContent = 'Wrong — the answer was: ' + questions[order[idx]].opts[correct_idx];
-      }
-
-      document.getElementById('score').textContent = 'Score: ' + correct + ' / ' + total +'The second and third letters are "ea".';
-      idx++;
-      setTimeout(showQuestion, 1400);
-    }
-      <button id="protectedButton">Continue</button>
+<div id="card">
+  <div id="game-area">
+    <div id="progress"></div>
+    <div id="question"></div>
+    <div id="options"></div>
+    <div id="feedback"></div>
+    <button id="next-btn">Next</button>
+  </div>
+  <div id="score-card">
+    <div id="score-num"></div>
+    <div id="score-label"></div>
+    <button id="restart-btn" onclick="startGame()">Play again</button>
+  </div>
+</div>
 
 <script>
-  document.getElementById("protectedButton").addEventListener("click", function() {
-   
-    var password = prompt("Enter the second and third letters.");
-    
-   
-    var correctPassword = "ea"; 
-
-   
-    if (password === correctPassword) {
-      alert("Continue");
-      window.location.href = "https://rileysamples.github.io/t3.html"; 
-    } else {
-      alert("Access denied.");
+  // ── EDIT YOUR QUESTIONS HERE ──────────────────────────────────────────
+  const questions = [
+    {
+      q: "What is the capital city of Australia?",
+      options: ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+      answer: 2
+    },
+    {
+      q: "How many bones are in the adult human body?",
+      options: ["196", "206", "216", "226"],
+      answer: 1
+    },
+    {
+      q: "Which planet in our solar system has the most moons?",
+      options: ["Jupiter", "Saturn", "Uranus", "Neptune"],
+      answer: 1
+    },
+    {
+      q: "What year did the Berlin Wall fall?",
+      options: ["1987", "1988", "1989", "1990"],
+      answer: 2
     }
-  });
+  ];
+  // answer: is the index (0–3) of the correct option
+  // ─────────────────────────────────────────────────────────────────────
+
+  let current = 0, score = 0, answered = false;
+
+  function startGame() {
+    current = 0; score = 0; answered = false;
+    document.getElementById('score-card').style.display = 'none';
+    document.getElementById('game-area').style.display = 'block';
+    showQuestion();
+  }
+
+  function showQuestion() {
+    answered = false;
+    const q = questions[current];
+    document.getElementById('progress').textContent = 'Question ' + (current + 1) + ' of ' + questions.length;
+    document.getElementById('question').textContent = q.q;
+    document.getElementById('feedback').textContent = '';
+    document.getElementById('next-btn').style.display = 'none';
+
+    const optDiv = document.getElementById('options');
+    optDiv.innerHTML = '';
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'option';
+      btn.textContent = opt;
+      btn.onclick = () => pick(i, btn);
+      optDiv.appendChild(btn);
+    });
+  }
+
+  function pick(i, btn) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current];
+    const allBtns = document.querySelectorAll('.option');
+    allBtns.forEach(b => b.disabled = true);
+
+    if (i === q.answer) {
+      btn.classList.add('correct');
+      document.getElementById('feedback').textContent = 'Correct!';
+      score++;
+    } else {
+      btn.classList.add('wrong');
+      allBtns[q.answer].classList.add('reveal');
+      document.getElementById('feedback').textContent = 'Not quite. The answer was: ' + q.options[q.answer];
+    }
+
+    const nextBtn = document.getElementById('next-btn');
+    nextBtn.style.display = 'inline-block';
+    nextBtn.textContent = current < questions.length - 1 ? 'Next' : 'See results';
+  }
+
+  document.getElementById('next-btn').onclick = () => {
+    current++;
+    if (current < questions.length) {
+      showQuestion();
+    } else {
+      document.getElementById('game-area').style.display = 'none';
+      document.getElementById('score-card').style.display = 'block';
+      document.getElementById('score-num').textContent = score + ' / ' + questions.length;
+      const msgs = ['Better luck next time!', 'Not bad!', 'Good effort!', 'Almost perfect!', 'Perfect score!'];
+      document.getElementById('score-label').textContent = msgs[score] || '';
+    }
+  };
+
+  startGame();
 </script>
-
-    init();
-  </script>
-
 </body>
 </html>
