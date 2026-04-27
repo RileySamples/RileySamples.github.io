@@ -5,3 +5,66 @@ body {
   background-attachment: fixed;
   background-position: center;
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dialogue Box Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f5f5f5;
+        }
+
+        #dialogueBox {
+            width: 300px;
+            margin: 20px auto;
+            padding: 15px;
+            border: 2px solid black;
+            background: white;
+            min-height: 60px;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dialogue Box -->
+    <div id="dialogueBox">
+        Hello there!
+    </div>
+
+    <!-- Next Button -->
+    <br>
+    <button onclick="nextDialogue()">Next</button>
+
+    <script>
+        const dialogues = [
+            "Hello there!",
+            "Welcome to this webpage.",
+            "Click next to continue.",
+            "Add your own dialogue here."
+        ];
+
+        let currentDialogue = 0;
+
+        function nextDialogue() {
+            currentDialogue++;
+
+            if (currentDialogue >= dialogues.length) {
+                currentDialogue = 0;
+            }
+
+            document.getElementById("dialogueBox").innerText =
+                dialogues[currentDialogue];
+        }
+    </script>
+
+</body>
+</html>
